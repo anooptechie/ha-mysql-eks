@@ -23,6 +23,8 @@ spec["pxc"]["resources"] = {
 spec["pxc"]["affinity"]["antiAffinityTopologyKey"] = "topology.kubernetes.io/zone"
 spec["pxc"]["volumeSpec"]["persistentVolumeClaim"]["resources"]["requests"]["storage"] = "3G"
 spec["haproxy"]["resources"] = {"requests": {"memory": "100M", "cpu": "100m"}}
+# Reachable from the EC2 host via any kind node IP (writer runs outside the cluster)
+spec["haproxy"]["exposePrimary"] = {"type": "NodePort"}
 spec["logcollector"]["enabled"] = False  # not needed for now
 
 with open("k8s/pxc/cr.yaml", "w") as fh:

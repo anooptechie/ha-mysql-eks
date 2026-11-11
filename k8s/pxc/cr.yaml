@@ -46,6 +46,8 @@ spec:
     podDisruptionBudget:
       maxUnavailable: 1
     gracePeriod: 30
+    exposePrimary:
+      type: NodePort
   proxysql:
     enabled: false
     size: 3
