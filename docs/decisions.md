@@ -17,3 +17,10 @@ Record each project decision here with the reason.
   and Oracle MySQL Operator (InnoDB Cluster + Router)
 - Possible follow-up: repeat the Phase 4 chaos runs on a second operator to compare
 - Risk: kind runs Kubernetes 1.37; documented operator support (June 2026) listed 1.33-1.36
+## Observation: operator restarts (Phase 2)
+- The operator pod restarted twice around the first cluster creation. Events show the
+  kubelet killed it after its liveness probe (:8080/metrics) was refused three times, i.e.
+  it had not started listening yet while the 2-vCPU host was busy pulling images and
+  starting pods. No errors in the running log; restart count stable afterwards.
+- kind runs Kubernetes 1.37, newer than the operator's documented range. If the operator
+  misbehaves during Phase 4 chaos runs, recreate kind on a 1.36 node image and retest.
