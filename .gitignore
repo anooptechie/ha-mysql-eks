@@ -12,3 +12,8 @@ kubeconfig*
 
 # Misc
 .DS_Store
+
+# Python / run output
+.venv/
+__pycache__/
+runs/
