@@ -1,0 +1,14 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!example.tfvars
+
+# Secrets / cluster access
+.env
+*.pem
+kubeconfig*
+
+# Misc
+.DS_Store
